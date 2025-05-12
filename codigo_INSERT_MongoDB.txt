@@ -1,0 +1,30 @@
+// codigo para la insercion de 100 registro en la tabla de "categorias" MONGODB
+
+use MiTienda_Online;
+un array de 100 categorías
+let categorias = [];
+for (let i = 1; i <= 100; i++) {
+        categorias.push({
+ "nombre": `Categoria ${i}`,
+"descripcion": `Descripción de la categoría ${i}.`,
+"fecha_creacion": new Date()
+});
+db.categorias.insertMany(categorias); }
+
+
+// codigo para la insercion de 100 registro en la tabla de "productos" 
+
+
+use MiTienda_Online;
+let ventas = [];
+for (let i = 1; i <= 100; i++) {
+    ventas.push({
+"producto_id": ObjectId(), // Suponiendo que hay un campo producto_id que referencia a otro documento
+        "cantidad": Math.floor(Math.random() * 10) + 1, // Cantidad de productos vendidos (aleatorio entre 1 y 10)
+        "precio_unitario": (Math.random() * 100).toFixed(2), // Precio unitario (aleatorio entre 0 y 100)
+        "total_venta": function() { return (this.cantidad * this.precio_unitario).toFixed(2); }, // Total de la venta
+        "fecha_venta": new Date(), // Fecha actual
+        "cliente_id": ObjectId(), // Suponiendo que hay un campo cliente_id que referencia a un cliente
+        "estado": "completa" // Estado de la venta (puedes personalizarlo según necesites)
+    });
+}

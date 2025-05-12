@@ -1,0 +1,19 @@
+// Eliminar 1 o varios registro teniendo en cuenta las tablas prodcutos, ventas y categorias MONGODB
+
+ELIMINAR UNO O VARIOS REGISTROS- El criterio para la eliminación es el ObjectId
+Base de datos MiTienda_Online
+use MiTienda_Online;
+// Eliminar un solo registro
+db.ventas.deleteOne(
+    { "_id": ObjectId("673804021c0fbb7142898377") } // Condición de búsqueda por ObjectId
+);
+
+
+VARIOS REGISTROS
+
+
+
+use MiTienda_Online;
+// Eliminar varios registros
+db.ventas.deleteMany (
+    { "estado": "cancelada" } // Condición de búsqueda, eliminando todas las ventas con estado 'cancelada');

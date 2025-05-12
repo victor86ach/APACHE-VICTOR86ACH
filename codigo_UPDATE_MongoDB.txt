@@ -1,0 +1,24 @@
+// Actualizacion de 1 o mas registros MONGODB
+
+use MiTienda_Online;
+solo registro
+use MiTienda_Online;
+// Actualizar el campo 'nombre' del documento con el ObjectId proporcionado
+db.categorias.updateOne(
+    { "_id": ObjectId("673801a51c0fbb714289818c") }, 
+    { $set: { "nombre": "Ropa de invierno" } } 
+);
+
+// codigo para actualizar varios registro con un criterio especifico
+
+
+use MiTienda_Online;
+// Actualizar varios registros
+db.ventas.updateMany(
+ { "estado": "completa" }, // Condición de búsqueda
+      { 
+$set: { 
+  "estado": "en proceso"  // Modificar el estado de todas las ventas con estado 'completa'
+       }
+});
+

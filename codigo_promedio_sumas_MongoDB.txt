@@ -1,0 +1,17 @@
+// Sumar la cantidad de ventas efectivas con estado "completa"
+
+const totalVentasCompletas = db.ventas.countDocuments ({ estado: "completa" });
+print("Total de ventas completas:", totalVentasCompletas);
+
+
+// Sacar el promedio de ventas con base a los precios
+
+db.ventas.aggregate([
+    { $match: { estado: "completa" } }, // Filtra las ventas con estado "completa"
+    { 
+        $group: { 
+ _id: null, // Agrupación global (sin categorías específicas)
+promedio: { $avg: "$monto" } // Calcula el promedio del campo "monto"
+}
+}
+]).forEach(doc => print("Promedio del monto de ventas completas:", doc.promedio));
